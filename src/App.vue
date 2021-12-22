@@ -1,12 +1,52 @@
 <template>
   <div class="container">
-    <h1>Hello</h1>
+    <Header title="Task Tracker"></Header>
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
 <script>
+import Header from './components/Header.vue';
+import Tasks from './components/Tasks.vue';
+
 export default {
   name: 'App',
+  components: {
+    Header,
+    Tasks,
+  },
+  data() {
+    return {
+      tasks: [],
+    };
+  },
+  methods: {
+    deleteTask(id) {
+      console.log('task', id);
+    },
+  },
+  created() {
+    this.tasks = [
+      {
+        id: 1,
+        text: 'Docs Cocks',
+        day: 'March 1nd',
+        reminder: true,
+      },
+      {
+        id: 2,
+        text: 'Weed store',
+        day: 'Nov 1nd',
+        reminder: false,
+      },
+      {
+        id: 3,
+        text: 'Docs Cocks',
+        day: 'March 1nd',
+        reminder: true,
+      },
+    ];
+  },
 };
 </script>
 
